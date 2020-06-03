@@ -16,7 +16,10 @@ resource "azurerm_resource_group" "main" {
     name = "tfmainrg"
     location = "Australia East"
 }
-
+variables "imagebuild" {
+    type        = string 
+    description = "Latest image build"
+}
 resource "azurerm_container_group" "tfcg_test" {
     name                = "weatherapi"
     location            = azurerm_resource_group.main.location
@@ -28,7 +31,7 @@ resource "azurerm_container_group" "tfcg_test" {
 
     container {
         name            = "weatherapi"
-        image           = "tazeem/weatherapi"
+        image           = "tazeem/weatherapi:${var.imagebuild}"
             cpu         = "1"
             memory      = "1"
 
