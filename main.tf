@@ -16,7 +16,7 @@ resource "azurerm_resource_group" "main" {
     name = "tfmainrg"
     location = "Australia East"
 }
-variables "imagebuild" {
+variable "imagebuild" {
     type        = string 
     description = "Latest image build"
 }
