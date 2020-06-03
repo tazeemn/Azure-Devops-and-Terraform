@@ -34,7 +34,7 @@ resource "azurerm_container_group" "tfcg_test" {
 
             ports {
                 port        = 80
-                protocol    = "tcp"
+                protocol    = "TCP"
             }
     }
 }
