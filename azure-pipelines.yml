@@ -29,19 +29,18 @@ stages:
         tags: |
           $(tag)
 - stage: Provision
-  displayName: 'Terraforing on Azure...'
+  displayName: 'Terraforming on Azure...'
   dependsOn: Build
   jobs:
   - job: Provision
-    displayName: 'Provisiong Container Instance'
+    displayName: 'Provisioning Container Instance'
     pool:
       vmImage: 'ubuntu-latest'
-    variables:
-    -group: TerraformEnvVar
+    variables: 
+    - group: TeraformEnvVars
     steps:
-    - script: | 
-        set -e 
-
+    - script: |
+        set -e
         terraform init -input=false
         terraform apply -input=false -auto-approve
       name: 'RunTerraform'
